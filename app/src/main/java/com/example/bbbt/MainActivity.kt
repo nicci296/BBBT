@@ -1,5 +1,7 @@
 package com.example.bbbt
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var timerDisplay: TextView
     private lateinit var stoppedTimeDisplay: TextView
     private lateinit var vibrationManager: VibrationManager
+    private lateinit var pulseAnimation: ObjectAnimator
     private val handler = Handler(Looper.getMainLooper())
 
 
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setupGestureDetector()
         vibrationManager = VibrationManager(this)
         setupViews()
+        pulseAnimation = createPulseAnimation()
         setupTimer()
         setupTips()
         setupClickListeners()
@@ -52,8 +56,16 @@ class MainActivity : AppCompatActivity() {
         timerManager.setCallbacks(
             timeCallback = { time ->
                 timerDisplay.text = String.format("%.1f", time)
+                if (time >= 19.0) {  // Start pulsing at last 5 seconds
+                    if (!pulseAnimation.isRunning) {
+                        pulseAnimation.start()
+                    }
+                } else {
+                    pulseAnimation.cancel()
+                }
             },
             finishedCallback = {
+                pulseAnimation.cancel()
                 timerDisplay.text = "Finished"
                 handler.postDelayed({
                     timerDisplay.text = "0.0"
@@ -87,6 +99,17 @@ class MainActivity : AppCompatActivity() {
             TimerState.FINISHED -> getColor(R.color.timer_finished)
         }
         timerDisplay.setTextColor(color)
+    }
+
+    private fun createPulseAnimation(): ObjectAnimator {
+        return ObjectAnimator.ofPropertyValuesHolder(
+            timerDisplay,
+            PropertyValuesHolder.ofFloat("scaleX", 1f, 1.2f, 1f),
+            PropertyValuesHolder.ofFloat("scaleY", 1f, 1.2f, 1f)
+        ).apply {
+            duration = 500
+            repeatCount = ObjectAnimator.INFINITE
+        }
     }
 
 
