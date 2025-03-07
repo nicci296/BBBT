@@ -56,8 +56,11 @@ class MainActivity : AppCompatActivity() {
             finishedCallback = {
                 timerDisplay.text = "Finished"
                 handler.postDelayed({
-                    timerDisplay.text = "0.00"
+                    timerDisplay.text = "0.0"
                 }, 2000)
+            },
+            stateCallback = { state ->
+                updateTimerColor(state)
             }
         )
     }
@@ -74,7 +77,16 @@ class MainActivity : AppCompatActivity() {
     private fun updateStoppedTimeDisplay() {
         val stopped = String.format("%.1f", timerManager.getStoppedTime())
         val remaining = String.format("%.1f", timerManager.getRemainingTime())
-        stoppedTimeDisplay.text = "Stopped: $stopped | Remaining: $remaining"
+        stoppedTimeDisplay.text = "Gestoppt: $stopped | Verbleibend: $remaining"
+    }
+
+    private fun updateTimerColor(state: TimerState) {
+        val color = when (state) {
+            TimerState.RUNNING -> getColor(R.color.timer_running)
+            TimerState.STOPPED -> getColor(R.color.timer_stopped)
+            TimerState.FINISHED -> getColor(R.color.timer_finished)
+        }
+        timerDisplay.setTextColor(color)
     }
 
 
