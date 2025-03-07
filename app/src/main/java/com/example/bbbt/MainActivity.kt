@@ -6,8 +6,11 @@ import android.widget.Button
 import android.widget.TextView
 import android.os.Handler
 import android.os.Looper
+import android.view.GestureDetector
+import android.view.MotionEvent
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var gestureDetector: GestureDetector
     private lateinit var timerManager: TimerManager
     private lateinit var timerDisplay: TextView
     private lateinit var stoppedTimeDisplay: TextView
@@ -19,10 +22,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setupGestureDetector()
         vibrationManager = VibrationManager(this)
         setupViews()
         setupTimer()
+        setupTips()
         setupClickListeners()
+    }
+
+    private fun setupGestureDetector() {
+        gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
+            override fun onDoubleTap(e: MotionEvent): Boolean {
+                vibrationManager.vibrateTimerAction()
+                timerManager.clear()
+                updateStoppedTimeDisplay()
+                return true
+            }
+        })
     }
 
     private fun setupViews() {
@@ -46,20 +62,41 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun setupTips() {
+        val tips = resources.getStringArray(R.array.tips)
+        val tipsText = StringBuilder("Tips:\n")
+        tips.forEach { tip ->
+            tipsText.append("• $tip\n")
+        }
+        findViewById<TextView>(R.id.tipsText).text = tipsText.toString().trimEnd()
+    }
+
     private fun updateStoppedTimeDisplay() {
         val stopped = String.format("%.1f", timerManager.getStoppedTime())
         val remaining = String.format("%.1f", timerManager.getRemainingTime())
         stoppedTimeDisplay.text = "Stopped: $stopped | Remaining: $remaining"
     }
 
+
     private fun setupClickListeners() {
-        timerDisplay.setOnClickListener {
-            vibrationManager.vibrateTimerAction()
-            if (timerManager.isRunning()) {
-                timerManager.stopTimer()
-                updateStoppedTimeDisplay()
-            } else {
-                timerManager.resume()
+        timerDisplay.apply {
+            setOnClickListener {
+                vibrationManager.vibrateTimerAction()
+                if (timerManager.isRunning()) {
+                    timerManager.stopTimer()
+                    updateStoppedTimeDisplay()
+                } else {
+                    timerManager.resume()
+                }
+            }
+
+            setOnTouchListener { v, event ->
+                if (gestureDetector.onTouchEvent(event)) {
+                    true
+                } else {
+                    performClick()
+                    false
+                }
             }
         }
 
