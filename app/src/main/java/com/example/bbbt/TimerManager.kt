@@ -9,6 +9,12 @@ enum class TimerState {
     FINISHED
 }
 
+enum class TimerMode {
+    TIMER_24,
+    TIMER_14
+}
+
+
 class TimerManager {
     private var startTime = 0L
     private var currentTime = 0.0
@@ -16,6 +22,7 @@ class TimerManager {
     private var lastStoppedTime = 0.0
     private var maxTime = 24.0
     private var currentState = TimerState.STOPPED
+    private var currentMode: TimerMode = TimerMode.TIMER_24
     private lateinit var timerCallback: (Double) -> Unit
     private lateinit var timerFinishedCallback: () -> Unit
     private lateinit var stateCallback: (TimerState) -> Unit
@@ -49,13 +56,25 @@ class TimerManager {
         this.stateCallback = stateCallback
     }
 
-    fun startTimer(seconds: Int = 24) {
+    fun handleTimerButton(mode: TimerMode) {
+        when {
+            !isRunning && currentMode == mode -> resume()
+            !isRunning -> startTimer(mode)
+            currentMode == mode -> stopTimer()
+            else -> startTimer(mode)
+        }
+
+    }
+
+    fun startTimer(mode: TimerMode) {
+        currentMode = mode
         maxTime = 24.0
-        currentTime = if (seconds == 14) 10.0 else 0.0
+        currentTime = if (mode == TimerMode.TIMER_14) 10.0 else 0.0
         startTime = System.currentTimeMillis() - (currentTime * 1000).toLong()
         isRunning = true
         currentState = TimerState.RUNNING
         stateCallback(currentState)
+        timerCallback(currentTime)
         handler.post(timerRunnable)
     }
 
@@ -93,6 +112,6 @@ class TimerManager {
         timerCallback(currentTime)
     }
 
-    fun getRemainingTime(): Double = maxTime - lastStoppedTime
+    fun getRemainingTime(): Double = maxTime - if (isRunning) currentTime else lastStoppedTime
     fun isRunning(): Boolean = isRunning
 }

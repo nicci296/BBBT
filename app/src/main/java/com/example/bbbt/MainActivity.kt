@@ -112,11 +112,13 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.button24).setOnClickListener {
             vibrationManager.vibrateButton()
-            timerManager.startTimer(24)
+            timerManager.handleTimerButton(TimerMode.TIMER_24)
+            updateRemainingTime()
         }
         findViewById<Button>(R.id.button14).setOnClickListener {
             vibrationManager.vibrateButton()
-            timerManager.startTimer(14)
+            timerManager.handleTimerButton(TimerMode.TIMER_14)
+            updateRemainingTime()
         }
         findViewById<Button>(R.id.buttonClear).setOnClickListener {
             vibrationManager.vibrateButton()
