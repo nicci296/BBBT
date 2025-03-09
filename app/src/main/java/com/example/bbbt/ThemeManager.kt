@@ -31,6 +31,14 @@ class ThemeManager(private val context: Context) {
         }
     }
 
+    fun applyTheme(theme: CustomTheme) {
+        themeUpdateCallback?.invoke(theme.primaryColor, theme.secondaryColor)
+    }
+
+    fun previewColors(primary: Int, secondary: Int) {
+        themeUpdateCallback?.invoke(primary, secondary)
+    }
+
     private fun applyColors(primaryColorRes: Int, secondaryColorRes: Int) {
         val primary = ContextCompat.getColor(context, primaryColorRes)
         val secondary = ContextCompat.getColor(context, secondaryColorRes)

@@ -102,6 +102,13 @@
                 android:text="Golden State Warriors"/>
         </RadioGroup>
 
+        <Button
+            android:id="@+id/createThemeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Custom Theme"
+            android:layout_marginTop="16dp"/>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

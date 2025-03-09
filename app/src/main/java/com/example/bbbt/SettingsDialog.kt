@@ -2,6 +2,9 @@ package com.example.bbbt
 
 import android.app.Dialog
 import android.content.Context
+import android.view.View
+import android.widget.Button
+import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -18,6 +21,7 @@ class SettingsDialog(
         setupSwitches()
         setupThemeSelection()
         setupTips()
+        setupCreateThemeButton()
     }
 
     private fun setupSwitches() {
@@ -39,7 +43,7 @@ class SettingsDialog(
     private fun setupThemeSelection() {
         val radioGroup = dialog.findViewById<RadioGroup>(R.id.themeRadioGroup)
 
-        // Set initial selection
+        // Set initial selection based on current theme
         when (settingsManager.selectedTheme) {
             TeamTheme.LAKERS -> radioGroup.check(R.id.lakersTheme)
             TeamTheme.MAVERICKS -> radioGroup.check(R.id.mavsTheme)
@@ -47,16 +51,57 @@ class SettingsDialog(
             TeamTheme.WARRIORS -> radioGroup.check(R.id.warriorsTheme)
         }
 
-        radioGroup.setOnCheckedChangeListener { _, checkedId ->
-            val selectedTheme = when (checkedId) {
-                R.id.lakersTheme -> TeamTheme.LAKERS
-                R.id.mavsTheme -> TeamTheme.MAVERICKS
-                R.id.celticsTheme -> TeamTheme.CELTICS
-                R.id.warriorsTheme -> TeamTheme.WARRIORS
-                else -> TeamTheme.LAKERS
+        // Add custom themes dynamically
+        settingsManager.customThemes.forEachIndexed { index, customTheme ->
+            val radioButton = RadioButton(context).apply {
+                id = View.generateViewId()  // Generate unique ID for custom theme radio buttons
+                text = customTheme.name
+                layoutParams = RadioGroup.LayoutParams(
+                    RadioGroup.LayoutParams.MATCH_PARENT,
+                    RadioGroup.LayoutParams.WRAP_CONTENT
+                )
             }
-            settingsManager.selectedTheme = selectedTheme
-            themeManager.applyTheme(selectedTheme)
+            radioGroup.addView(radioButton)
+        }
+
+        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                // Setup preset themes
+                R.id.lakersTheme -> {
+                    settingsManager.selectedTheme = TeamTheme.LAKERS
+                    themeManager.applyTheme(TeamTheme.LAKERS)
+                }
+                R.id.mavsTheme -> {
+                    settingsManager.selectedTheme = TeamTheme.MAVERICKS
+                    themeManager.applyTheme(TeamTheme.MAVERICKS)
+                }
+                R.id.celticsTheme -> {
+                    settingsManager.selectedTheme = TeamTheme.CELTICS
+                    themeManager.applyTheme(TeamTheme.CELTICS)
+                }
+                R.id.warriorsTheme -> {
+                    settingsManager.selectedTheme = TeamTheme.WARRIORS
+                    themeManager.applyTheme(TeamTheme.WARRIORS)
+                }
+                else -> {
+                    val radioButton = radioGroup.findViewById<RadioButton>(checkedId)
+                    val customTheme = settingsManager.customThemes.find { it.name == radioButton.text }
+                    customTheme?.let { themeManager.applyTheme(it) }
+                }
+            }
+        }
+    }
+
+    private fun setupCreateThemeButton() {
+        dialog.findViewById<Button>(R.id.createThemeButton).setOnClickListener {
+            ThemeCreatorDialog(
+                context,
+                settingsManager,
+                themeManager
+            ) {
+                // Refresh the theme list
+                setupThemeSelection()
+            }.show()
         }
     }
 
