@@ -50,87 +50,84 @@
             android:backgroundTint="@color/design_default_color_primary"/>
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:id="@+id/rightContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:layout_marginStart="8dp"
         app:layout_constraintLeft_toRightOf="@id/leftContainer"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerText"
         app:layout_constraintBottom_toTopOf="@id/footerText">
 
-        <TextView
-            android:id="@+id/timerDisplay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="48sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="0.0"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackground"
-            android:padding="16dp"/>
-
-        <TextView
-            android:id="@+id/remainingTimeDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/timerDisplay"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-
         <LinearLayout
-            android:id="@+id/adjustButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/timerDisplay">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/buttonClear"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/timerDisplay"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Clear"
-                android:layout_margin="2dp" />
+                android:textSize="48sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="0.0"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:padding="16dp"/>
 
-            <Button
-                android:id="@+id/buttonPlus"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/remainingTimeDisplay"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="+1s"
-                android:layout_margin="2dp" />
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_marginTop="8dp"/>
 
-            <Button
-                android:id="@+id/buttonMinus"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/adjustButtons"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="-1s"
-                android:layout_margin="2dp" />
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
 
+                <Button
+                    android:id="@+id/buttonClear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Clear"
+                    android:layout_margin="2dp" />
+
+                <Button
+                    android:id="@+id/buttonPlus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="+1s"
+                    android:layout_margin="2dp" />
+
+                <Button
+                    android:id="@+id/buttonMinus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-1s"
+                    android:layout_margin="2dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tipsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"/>
         </LinearLayout>
-        <TextView
-            android:id="@+id/tipsText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:layout_marginTop="32dp"
-            android:gravity="start"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@id/adjustButtons"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-    </LinearLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/footerText"

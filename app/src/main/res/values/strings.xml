@@ -2,7 +2,6 @@
     <string name="app_name">BBBT</string>
 
     <string-array name="tips">
-        <item>Double-tap Timer für Neustart</item>
         <item>Tap Timer für start/stop</item>
         <item>Passe mit +/- die gestoppte Zeit an</item>
         <item>Clear setzt den Timer zurück</item>
