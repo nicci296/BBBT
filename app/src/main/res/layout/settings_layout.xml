@@ -100,6 +100,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Golden State Warriors"/>
+
+            <RadioButton
+                android:id="@+id/bullsTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chicago Bulls"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/heatTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Miami Heat"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/netsTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Brooklyn Nets"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/sunsTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phoenix Suns"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/bucksTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Milwaukee Bucks"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/jazzTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Utah Jazz"/>
         </RadioGroup>
 
         <Button
