@@ -16,11 +16,11 @@ enum class TimerMode {
 
 
 class TimerManager {
+    var maxTime = 24.0
     private var startTime = 0L
     private var currentTime = 0.0
     private var isRunning = false
     private var lastStoppedTime = 0.0
-    private var maxTime = 24.0
     private var currentState = TimerState.STOPPED
     private var currentMode: TimerMode = TimerMode.TIMER_24
     private lateinit var timerCallback: (Double) -> Unit
