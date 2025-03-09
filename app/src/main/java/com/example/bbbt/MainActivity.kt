@@ -2,20 +2,16 @@ package com.example.bbbt
 
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import android.os.Handler
 import android.os.Looper
-import android.view.GestureDetector
-import android.view.MotionEvent
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var gestureDetector: GestureDetector
     private lateinit var timerManager: TimerManager
     private lateinit var timerDisplay: TextView
-    private lateinit var stoppedTimeDisplay: TextView
     private lateinit var vibrationManager: VibrationManager
     private lateinit var pulseAnimation: ObjectAnimator
     private val handler = Handler(Looper.getMainLooper())
@@ -25,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupGestureDetector()
         vibrationManager = VibrationManager(this)
         setupViews()
         pulseAnimation = createPulseAnimation()
@@ -34,20 +29,9 @@ class MainActivity : AppCompatActivity() {
         setupClickListeners()
     }
 
-    private fun setupGestureDetector() {
-        gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
-            override fun onDoubleTap(e: MotionEvent): Boolean {
-                vibrationManager.vibrateTimerAction()
-                timerManager.clear()
-                updateStoppedTimeDisplay()
-                return true
-            }
-        })
-    }
 
     private fun setupViews() {
         timerDisplay = findViewById(R.id.timerDisplay)
-        stoppedTimeDisplay = findViewById(R.id.stoppedTimeDisplay)
     }
 
 
@@ -67,6 +51,7 @@ class MainActivity : AppCompatActivity() {
             finishedCallback = {
                 pulseAnimation.cancel()
                 timerDisplay.text = "Finished"
+                updateRemainingTime()
                 handler.postDelayed({
                     timerDisplay.text = "0.0"
                 }, 2000)
@@ -86,11 +71,11 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tipsText).text = tipsText.toString().trimEnd()
     }
 
-    private fun updateStoppedTimeDisplay() {
-        val stopped = String.format("%.1f", timerManager.getStoppedTime())
+    private fun updateRemainingTime() {
         val remaining = String.format("%.1f", timerManager.getRemainingTime())
-        stoppedTimeDisplay.text = "Gestoppt: $stopped | Verbleibend: $remaining"
+        findViewById<TextView>(R.id.remainingTimeDisplay).text = "Verbleibend: $remaining"
     }
+
 
     private fun updateTimerColor(state: TimerState) {
         val color = when (state) {
@@ -112,25 +97,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setupClickListeners() {
         timerDisplay.apply {
             setOnClickListener {
                 vibrationManager.vibrateTimerAction()
                 if (timerManager.isRunning()) {
                     timerManager.stopTimer()
-                    updateStoppedTimeDisplay()
+                    updateRemainingTime()
                 } else {
                     timerManager.resume()
-                }
-            }
-
-            setOnTouchListener { v, event ->
-                if (gestureDetector.onTouchEvent(event)) {
-                    true
-                } else {
-                    performClick()
-                    false
                 }
             }
         }
@@ -146,17 +121,17 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonClear).setOnClickListener {
             vibrationManager.vibrateButton()
             timerManager.clear()
-            updateStoppedTimeDisplay()
+            updateRemainingTime()
         }
         findViewById<Button>(R.id.buttonPlus).setOnClickListener {
             vibrationManager.vibrateButton()
             timerManager.adjustStoppedTime(1.0)
-            updateStoppedTimeDisplay()
+            updateRemainingTime()
         }
         findViewById<Button>(R.id.buttonMinus).setOnClickListener {
             vibrationManager.vibrateButton()
             timerManager.adjustStoppedTime(-1.0)
-            updateStoppedTimeDisplay()
+            updateRemainingTime()
         }
     }
 
