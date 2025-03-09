@@ -52,6 +52,9 @@ class MainActivity : AppCompatActivity() {
         timerManager.setCallbacks(
             timeCallback = { time ->
                 timerDisplay.text = String.format("%.1f", time)
+                val remaining = String.format("%.1f", timerManager.maxTime - time)
+                findViewById<TextView>(R.id.remainingTimeDisplay).text = "Verbleibend: $remaining"
+
                 if (time >= 19.0 && settingsManager.isPulseEnabled) {
                     if (!pulseAnimation.isRunning) {
                         pulseAnimation.start()

@@ -19,9 +19,33 @@
 
     <!-- Celtics -->
     <color name="celtics_primary">#008348</color>   <!-- Green -->
-    <color name="celtics_secondary">#FFFFFF</color> <!-- White -->
+    <color name="celtics_secondary">#008348</color> <!-- Green -->
 
     <!-- Warriors -->
     <color name="warriors_primary">#1D428A</color>  <!-- Royal Blue -->
     <color name="warriors_secondary">#FFC72C</color><!-- Golden Yellow -->
+
+    <!-- Chicago Bulls -->
+    <color name="bulls_primary">#CE1141</color>     <!-- Bulls Red -->
+    <color name="bulls_secondary">#000000</color>   <!-- Black -->
+
+    <!-- Miami Heat -->
+    <color name="heat_primary">#98002E</color>      <!-- Heat Red -->
+    <color name="heat_secondary">#F9A01B</color>    <!-- Heat Yellow -->
+
+    <!-- Brooklyn Nets -->
+    <color name="nets_primary">#000000</color>      <!-- Black -->
+    <color name="nets_secondary">#000000</color>    <!-- Black -->
+
+    <!-- Phoenix Suns -->
+    <color name="suns_primary">#1D1160</color>      <!-- Suns Purple -->
+    <color name="suns_secondary">#E56020</color>    <!-- Suns Orange -->
+
+    <!-- Milwaukee Bucks -->
+    <color name="bucks_primary">#00471B</color>     <!-- Bucks Green -->
+    <color name="bucks_secondary">#EEE1C6</color>   <!-- Cream -->
+
+    <!-- Utah Jazz -->
+    <color name="jazz_primary">#002B5C</color>      <!-- Jazz Navy -->
+    <color name="jazz_secondary">#F9A01B</color>    <!-- Jazz Gold -->
 </resources>
