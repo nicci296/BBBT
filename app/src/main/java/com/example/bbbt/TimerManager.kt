@@ -57,13 +57,7 @@ class TimerManager {
     }
 
     fun handleTimerButton(mode: TimerMode) {
-        when {
-            currentState == TimerState.FINISHED -> startTimer(mode)
-            !isRunning && currentMode == mode -> resume()
-            !isRunning -> startTimer(mode)
-            currentMode == mode -> stopTimer()
-            else -> startTimer(mode)
-        }
+        startTimer(mode)
     }
 
     fun startTimer(mode: TimerMode) {
