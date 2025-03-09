@@ -6,9 +6,12 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import com.google.android.material.switchmaterial.SwitchMaterial
 
-class SettingsDialog(private val context: Context, private val settingsManager: SettingsManager) {
+class SettingsDialog(
+    private val context: Context,
+    private val settingsManager: SettingsManager,
+    private val themeManager: ThemeManager
+) {
     private val dialog = Dialog(context)
-    private val themeManager = ThemeManager(context)
 
     init {
         dialog.setContentView(R.layout.settings_layout)

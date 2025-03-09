@@ -1,12 +1,19 @@
 package com.example.bbbt
 
 import android.content.Context
+import androidx.core.content.ContextCompat
 
 enum class TeamTheme {
     LAKERS, MAVERICKS, CELTICS, WARRIORS
 }
 
 class ThemeManager(private val context: Context) {
+    private var themeUpdateCallback: ((Int, Int) -> Unit)? = null
+
+    fun setThemeUpdateCallback(callback: (primaryColor: Int, secondaryColor: Int) -> Unit) {
+        themeUpdateCallback = callback
+    }
+
     fun applyTheme(theme: TeamTheme) {
         when (theme) {
             TeamTheme.LAKERS -> {
@@ -25,6 +32,8 @@ class ThemeManager(private val context: Context) {
     }
 
     private fun applyColors(primaryColorRes: Int, secondaryColorRes: Int) {
-        // Implementation coming in next step
+        val primary = ContextCompat.getColor(context, primaryColorRes)
+        val secondary = ContextCompat.getColor(context, secondaryColorRes)
+        themeUpdateCallback?.invoke(primary, secondary)
     }
 }

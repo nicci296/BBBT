@@ -2,6 +2,7 @@ package com.example.bbbt
 
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var timerDisplay: TextView
     private lateinit var vibrationManager: VibrationManager
     private lateinit var settingsManager: SettingsManager
+    private lateinit var themeManager: ThemeManager
     private lateinit var pulseAnimation: ObjectAnimator
     private val handler = Handler(Looper.getMainLooper())
 
@@ -24,13 +26,20 @@ class MainActivity : AppCompatActivity() {
 
         vibrationManager = VibrationManager(this)
         settingsManager = SettingsManager(this)
+        themeManager = ThemeManager(this)
+
+        // Apply saved theme on startup
+        setupThemeCallback()
+        themeManager.applyTheme(settingsManager.selectedTheme)
+
         setupViews()
+
         pulseAnimation = createPulseAnimation()
         setupTimer()
         setupClickListeners()
 
         findViewById<ImageButton>(R.id.settingsButton).setOnClickListener {
-            SettingsDialog(this, settingsManager).show()
+            SettingsDialog(this, settingsManager, themeManager).show()
         }
     }
 
@@ -88,6 +97,20 @@ class MainActivity : AppCompatActivity() {
         ).apply {
             duration = 500
             repeatCount = ObjectAnimator.INFINITE
+        }
+    }
+
+    private fun setupThemeCallback() {
+        themeManager.setThemeUpdateCallback { primary, secondary ->
+            findViewById<Button>(R.id.button24).backgroundTintList = ColorStateList.valueOf(primary)
+            findViewById<Button>(R.id.button14).backgroundTintList = ColorStateList.valueOf(primary)
+
+            findViewById<Button>(R.id.buttonClear).backgroundTintList = ColorStateList.valueOf(secondary)
+            findViewById<Button>(R.id.buttonPlus).backgroundTintList = ColorStateList.valueOf(secondary)
+            findViewById<Button>(R.id.buttonMinus).backgroundTintList = ColorStateList.valueOf(secondary)
+
+            findViewById<TextView>(R.id.headerText).setTextColor(primary)
+            findViewById<TextView>(R.id.footerText).setTextColor(secondary)
         }
     }
 
