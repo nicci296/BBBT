@@ -14,7 +14,7 @@
         android:textStyle="bold"
         android:gravity="center"
         android:layout_marginEnd="40dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -26,7 +26,7 @@
         android:src="@drawable/ic_settings"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="Settings"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
