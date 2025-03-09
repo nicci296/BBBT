@@ -6,4 +6,22 @@
     <color name="timer_running">#4CAF50</color>  <!-- Green -->
     <color name="timer_stopped">#FFC107</color>  <!-- Yellow -->
     <color name="timer_finished">#F44336</color> <!-- Red -->
+
+    <!-- Themes -->
+
+    <!-- Lakers -->
+    <color name="lakers_primary">#552583</color>    <!-- Purple -->
+    <color name="lakers_secondary">#FDB927</color>  <!-- Gold -->
+
+    <!-- Mavericks -->
+    <color name="mavs_primary">#0064B1</color>     <!-- Royal Blue -->
+    <color name="mavs_secondary">#BBC4CA</color>    <!-- Silver -->
+
+    <!-- Celtics -->
+    <color name="celtics_primary">#008348</color>   <!-- Green -->
+    <color name="celtics_secondary">#FFFFFF</color> <!-- White -->
+
+    <!-- Warriors -->
+    <color name="warriors_primary">#1D428A</color>  <!-- Royal Blue -->
+    <color name="warriors_secondary">#FFC72C</color><!-- Golden Yellow -->
 </resources>
