@@ -87,12 +87,12 @@ class TimerManager {
         }
     }
 
-    // add and subtract time
     fun adjustStoppedTime(seconds: Double) {
-        lastStoppedTime = (lastStoppedTime + seconds).coerceIn(0.0, maxTime)
+        currentTime = (currentTime + seconds).coerceIn(0.0, maxTime)
+        lastStoppedTime = currentTime
+        timerCallback(currentTime)
     }
 
-    fun getStoppedTime(): Double = lastStoppedTime
     fun getRemainingTime(): Double = maxTime - lastStoppedTime
     fun isRunning(): Boolean = isRunning
 }
