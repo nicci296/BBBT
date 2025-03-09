@@ -45,4 +45,10 @@ class SettingsManager(context: Context) {
         currentThemes.add(theme)
         customThemes = currentThemes
     }
+
+    fun removeCustomTheme(theme: CustomTheme) {
+        val currentThemes = customThemes.toMutableList()
+        currentThemes.remove(theme)
+        customThemes = currentThemes
+    }
 }

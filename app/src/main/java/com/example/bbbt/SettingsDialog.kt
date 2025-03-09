@@ -4,6 +4,8 @@ import android.app.Dialog
 import android.content.Context
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -51,17 +53,47 @@ class SettingsDialog(
             TeamTheme.WARRIORS -> radioGroup.check(R.id.warriorsTheme)
         }
 
+        // Clear existing custom themes before adding them again
+        val childCount = radioGroup.childCount
+        for (i in childCount - 1 downTo 0) {
+            val view = radioGroup.getChildAt(i)
+            if (view.id !in listOf(R.id.lakersTheme, R.id.mavsTheme, R.id.celticsTheme, R.id.warriorsTheme)) {
+                radioGroup.removeViewAt(i)
+            }
+        }
+
         // Add custom themes dynamically
-        settingsManager.customThemes.forEachIndexed { index, customTheme ->
-            val radioButton = RadioButton(context).apply {
-                id = View.generateViewId()  // Generate unique ID for custom theme radio buttons
-                text = customTheme.name
+        settingsManager.customThemes.forEach { customTheme ->
+            val container = LinearLayout(context).apply {
+                orientation = LinearLayout.HORIZONTAL
                 layoutParams = RadioGroup.LayoutParams(
                     RadioGroup.LayoutParams.MATCH_PARENT,
                     RadioGroup.LayoutParams.WRAP_CONTENT
                 )
             }
-            radioGroup.addView(radioButton)
+
+            val radioButton = RadioButton(context).apply {
+                id = View.generateViewId()
+                text = customTheme.name
+                layoutParams = LinearLayout.LayoutParams(
+                    0,
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    1f
+                )
+            }
+
+            val deleteButton = ImageButton(context).apply {
+                setImageResource(R.drawable.ic_delete)
+                setBackgroundResource(android.R.color.transparent)
+                setOnClickListener {
+                    settingsManager.removeCustomTheme(customTheme)
+                    setupThemeSelection()
+                }
+            }
+
+            container.addView(radioButton)
+            container.addView(deleteButton)
+            radioGroup.addView(container)
         }
 
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
