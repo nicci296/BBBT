@@ -2,14 +2,16 @@ package com.example.bbbt
 
 import android.app.Dialog
 import android.content.Context
+import android.widget.TextView
 import com.google.android.material.switchmaterial.SwitchMaterial
 
-class SettingsDialog(context: Context, private val settingsManager: SettingsManager) {
+class SettingsDialog(private val context: Context, private val settingsManager: SettingsManager) {
     private val dialog = Dialog(context)
 
     init {
         dialog.setContentView(R.layout.settings_layout)
         setupSwitches()
+        setupTips()
     }
 
     private fun setupSwitches() {
@@ -26,6 +28,12 @@ class SettingsDialog(context: Context, private val settingsManager: SettingsMana
                 settingsManager.isPulseEnabled = isChecked
             }
         }
+    }
+
+    private fun setupTips() {
+        val tips = context.resources.getStringArray(R.array.tips)
+        val tipsText = StringBuilder("• ").append(tips.joinToString("\n• "))
+        dialog.findViewById<TextView>(R.id.tipsText).text = tipsText
     }
 
     fun show() {

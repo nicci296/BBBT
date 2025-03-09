@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         setupViews()
         pulseAnimation = createPulseAnimation()
         setupTimer()
-        setupTips()
         setupClickListeners()
 
         findViewById<ImageButton>(R.id.settingsButton).setOnClickListener {
@@ -66,14 +65,6 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private fun setupTips() {
-        val tips = resources.getStringArray(R.array.tips)
-        val tipsText = StringBuilder("Tips:\n")
-        tips.forEach { tip ->
-            tipsText.append("• $tip\n")
-        }
-        findViewById<TextView>(R.id.tipsText).text = tipsText.toString().trimEnd()
-    }
 
     private fun updateRemainingTime() {
         val remaining = String.format("%.1f", timerManager.getRemainingTime())
