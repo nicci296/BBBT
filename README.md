@@ -1,5 +1,5 @@
 # BBBT - Bonntastischer Bonntakk BBall Timer
-![Version](https://img.shields.io/badge/version-1.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1-blue.svg)
 
 A specialized basketball possession timer for referees, designed for precise 24/14 second rule enforcement.
 
@@ -15,7 +15,6 @@ Basketball referees need to track possession time during games according to FIBA
 - Precise Control:
   - One-second adjustments (+/- buttons)
   - Tap timer display to start/stop
-  - Double-tap for instant reset
 - Visual Feedback:
   - Color-coded states:
     - Green: Running
@@ -28,7 +27,6 @@ Basketball referees need to track possession time during games according to FIBA
 ## Controls
 - Timer Display:
   - Tap to start/stop
-  - Double-tap to reset
 - Main Buttons:
   - 24s: Start 24-second countdown
   - 14s: Start at 10 seconds, count to 24
