@@ -58,12 +58,12 @@ class TimerManager {
 
     fun handleTimerButton(mode: TimerMode) {
         when {
+            currentState == TimerState.FINISHED -> startTimer(mode)
             !isRunning && currentMode == mode -> resume()
             !isRunning -> startTimer(mode)
             currentMode == mode -> stopTimer()
             else -> startTimer(mode)
         }
-
     }
 
     fun startTimer(mode: TimerMode) {
@@ -106,9 +106,14 @@ class TimerManager {
         }
     }
 
-    fun adjustStoppedTime(seconds: Double) {
-        currentTime = (currentTime + seconds).coerceIn(0.0, maxTime)
-        lastStoppedTime = currentTime
+    fun adjustTime(seconds: Double) {
+        if (isRunning) {
+            currentTime = (currentTime + seconds).coerceIn(0.0, maxTime)
+            startTime = System.currentTimeMillis() - (currentTime * 1000).toLong()
+        } else {
+            currentTime = (currentTime + seconds).coerceIn(0.0, maxTime)
+            lastStoppedTime = currentTime
+        }
         timerCallback(currentTime)
     }
 

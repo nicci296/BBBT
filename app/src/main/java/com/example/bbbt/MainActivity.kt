@@ -127,12 +127,12 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.buttonPlus).setOnClickListener {
             vibrationManager.vibrateButton()
-            timerManager.adjustStoppedTime(1.0)
+            timerManager.adjustTime(1.0)
             updateRemainingTime()
         }
         findViewById<Button>(R.id.buttonMinus).setOnClickListener {
             vibrationManager.vibrateButton()
-            timerManager.adjustStoppedTime(-1.0)
+            timerManager.adjustTime(-1.0)
             updateRemainingTime()
         }
     }
