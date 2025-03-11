@@ -19,15 +19,15 @@ class SettingsManager(context: Context) {
 
     var isVibrationEnabled: Boolean
         get() = prefs.getBoolean(KEY_VIBRATION, true)
-        set(value) = prefs.edit() { putBoolean(KEY_VIBRATION, value) }
+        set(value) = prefs.edit { putBoolean(KEY_VIBRATION, value) }
 
     var isPulseEnabled: Boolean
         get() = prefs.getBoolean(KEY_PULSE, true)
-        set(value) = prefs.edit() { putBoolean(KEY_PULSE, value) }
+        set(value) = prefs.edit { putBoolean(KEY_PULSE, value) }
 
     var selectedTheme: TeamTheme
         get() = TeamTheme.valueOf(prefs.getString(KEY_THEME, TeamTheme.LAKERS.name) ?: TeamTheme.LAKERS.name)
-        set(value) = prefs.edit() { putString(KEY_THEME, value.name) }
+        set(value) = prefs.edit { putString(KEY_THEME, value.name) }
 
     var customThemes: List<CustomTheme>
         get() {

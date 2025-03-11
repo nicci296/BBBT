@@ -1,7 +1,7 @@
 package com.example.bbbt
 
+import android.app.Activity
 import android.content.Context
-import androidx.core.content.ContextCompat
 
 enum class TeamTheme {
     LAKERS,
@@ -17,38 +17,122 @@ enum class TeamTheme {
 }
 
 class ThemeManager(private val context: Context) {
-    private var themeUpdateCallback: ((Int, Int) -> Unit)? = null
-
-    fun setThemeUpdateCallback(callback: (primaryColor: Int, secondaryColor: Int) -> Unit) {
-        themeUpdateCallback = callback
-    }
+    private var themeUpdateCallback: ((Int, Int, Int, Int, Int, Int) -> Unit)? = null
 
     fun applyTheme(theme: TeamTheme) {
-        when (theme) {
-            TeamTheme.LAKERS -> applyColors(R.color.lakers_primary, R.color.lakers_secondary)
-            TeamTheme.MAVERICKS -> applyColors(R.color.mavs_primary, R.color.mavs_secondary)
-            TeamTheme.CELTICS -> applyColors(R.color.celtics_primary, R.color.celtics_secondary)
-            TeamTheme.WARRIORS -> applyColors(R.color.warriors_primary, R.color.warriors_secondary)
-            TeamTheme.BULLS -> applyColors(R.color.bulls_primary, R.color.bulls_secondary)
-            TeamTheme.HEAT -> applyColors(R.color.heat_primary, R.color.heat_secondary)
-            TeamTheme.NETS -> applyColors(R.color.nets_primary, R.color.nets_secondary)
-            TeamTheme.SUNS -> applyColors(R.color.suns_primary, R.color.suns_secondary)
-            TeamTheme.BUCKS -> applyColors(R.color.bucks_primary, R.color.bucks_secondary)
-            TeamTheme.JAZZ -> applyColors(R.color.jazz_primary, R.color.jazz_secondary)
+        val colors = when (theme) {
+            TeamTheme.LAKERS -> TeamThemeColors(
+                primary = context.getColor(R.color.lakers_primary),
+                secondary = context.getColor(R.color.lakers_secondary),
+                background = context.getColor(R.color.lakers_background),
+                textOnPrimary = context.getColor(R.color.lakers_text_on_primary),
+                textOnSecondary = context.getColor(R.color.lakers_text_on_secondary),
+                textOnBackground = context.getColor(R.color.lakers_text_on_background)
+            )
+            TeamTheme.MAVERICKS -> TeamThemeColors(
+                primary = context.getColor(R.color.mavs_primary),
+                secondary = context.getColor(R.color.mavs_secondary),
+                background = context.getColor(R.color.mavs_background),
+                textOnPrimary = context.getColor(R.color.mavs_text_on_primary),
+                textOnSecondary = context.getColor(R.color.mavs_text_on_secondary),
+                textOnBackground = context.getColor(R.color.mavs_text_on_background)
+            )
+            TeamTheme.WARRIORS -> TeamThemeColors(
+                primary = context.getColor(R.color.warriors_primary),
+                secondary = context.getColor(R.color.warriors_secondary),
+                background = context.getColor(R.color.warriors_background),
+                textOnPrimary = context.getColor(R.color.warriors_text_on_primary),
+                textOnSecondary = context.getColor(R.color.warriors_text_on_secondary),
+                textOnBackground = context.getColor(R.color.warriors_text_on_background)
+            )
+            TeamTheme.HEAT -> TeamThemeColors(
+                primary = context.getColor(R.color.heat_primary),
+                secondary = context.getColor(R.color.heat_secondary),
+                background = context.getColor(R.color.heat_background),
+                textOnPrimary = context.getColor(R.color.heat_text_on_primary),
+                textOnSecondary = context.getColor(R.color.heat_text_on_secondary),
+                textOnBackground = context.getColor(R.color.heat_text_on_background)
+            )
+            TeamTheme.JAZZ -> TeamThemeColors(
+                primary = context.getColor(R.color.jazz_primary),
+                secondary = context.getColor(R.color.jazz_secondary),
+                background = context.getColor(R.color.jazz_background),
+                textOnPrimary = context.getColor(R.color.jazz_text_on_primary),
+                textOnSecondary = context.getColor(R.color.jazz_text_on_secondary),
+                textOnBackground = context.getColor(R.color.jazz_text_on_background)
+            )
+            TeamTheme.BUCKS -> TeamThemeColors(
+                primary = context.getColor(R.color.bucks_primary),
+                secondary = context.getColor(R.color.bucks_secondary),
+                background = context.getColor(R.color.bucks_background),
+                textOnPrimary = context.getColor(R.color.bucks_text_on_primary),
+                textOnSecondary = context.getColor(R.color.bucks_text_on_secondary),
+                textOnBackground = context.getColor(R.color.bucks_text_on_background)
+            )
+            TeamTheme.CELTICS -> TeamThemeColors(
+                primary = context.getColor(R.color.celtics_primary),
+                secondary = context.getColor(R.color.celtics_secondary),
+                background = context.getColor(R.color.celtics_background),
+                textOnPrimary = context.getColor(R.color.celtics_text_on_primary),
+                textOnSecondary = context.getColor(R.color.celtics_text_on_secondary),
+                textOnBackground = context.getColor(R.color.celtics_text_on_background)
+            )
+            TeamTheme.NETS -> TeamThemeColors(
+                primary = context.getColor(R.color.nets_primary),
+                secondary = context.getColor(R.color.nets_secondary),
+                background = context.getColor(R.color.nets_background),
+                textOnPrimary = context.getColor(R.color.nets_text_on_primary),
+                textOnSecondary = context.getColor(R.color.nets_text_on_secondary),
+                textOnBackground = context.getColor(R.color.nets_text_on_background)
+            )
+            TeamTheme.SUNS -> TeamThemeColors(
+                primary = context.getColor(R.color.suns_primary),
+                secondary = context.getColor(R.color.suns_secondary),
+                background = context.getColor(R.color.suns_background),
+                textOnPrimary = context.getColor(R.color.suns_text_on_primary),
+                textOnSecondary = context.getColor(R.color.suns_text_on_secondary),
+                textOnBackground = context.getColor(R.color.suns_text_on_background)
+            )
+            TeamTheme.BULLS -> TeamThemeColors(
+                primary = context.getColor(R.color.bulls_primary),
+                secondary = context.getColor(R.color.bulls_secondary),
+                background = context.getColor(R.color.bulls_background),
+                textOnPrimary = context.getColor(R.color.bulls_text_on_primary),
+                textOnSecondary = context.getColor(R.color.bulls_text_on_secondary),
+                textOnBackground = context.getColor(R.color.bulls_text_on_background)
+            )
+
         }
+        applyColors(colors)
     }
 
     fun applyTheme(theme: CustomTheme) {
-        themeUpdateCallback?.invoke(theme.primaryColor, theme.secondaryColor)
+        themeUpdateCallback?.invoke(
+            theme.primaryColor,
+            theme.secondaryColor,
+            theme.backgroundColor,
+            theme.textOnPrimary,
+            theme.textOnSecondary,
+            theme.textOnBackground
+        )
     }
 
-    fun previewColors(primary: Int, secondary: Int) {
-        themeUpdateCallback?.invoke(primary, secondary)
+
+    private fun applyColors(colors: TeamThemeColors) {
+        val window = (context as Activity).window
+        window.decorView.setBackgroundColor(colors.background)
+
+        themeUpdateCallback?.invoke(
+            colors.primary,
+            colors.secondary,
+            colors.background,
+            colors.textOnPrimary,
+            colors.textOnSecondary,
+            colors.textOnBackground
+        )
     }
 
-    private fun applyColors(primaryColorRes: Int, secondaryColorRes: Int) {
-        val primary = ContextCompat.getColor(context, primaryColorRes)
-        val secondary = ContextCompat.getColor(context, secondaryColorRes)
-        themeUpdateCallback?.invoke(primary, secondary)
+    fun setThemeUpdateCallback(callback: (primary: Int, secondary: Int, background: Int, textOnPrimary: Int, textOnSecondary: Int, textOnBackground: Int) -> Unit) {
+        themeUpdateCallback = callback
     }
 }

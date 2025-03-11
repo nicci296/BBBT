@@ -104,18 +104,42 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupThemeCallback() {
-        themeManager.setThemeUpdateCallback { primary, secondary ->
-            findViewById<Button>(R.id.button24).backgroundTintList = ColorStateList.valueOf(primary)
-            findViewById<Button>(R.id.button14).backgroundTintList = ColorStateList.valueOf(primary)
+        themeManager.setThemeUpdateCallback { primary, secondary, background, textOnPrimary, textOnSecondary, textOnBackground ->
+            // Main Timer Buttons
+            findViewById<Button>(R.id.button24).apply {
+                backgroundTintList = ColorStateList.valueOf(primary)
+                setTextColor(textOnPrimary)
+            }
+            findViewById<Button>(R.id.button14).apply {
+                backgroundTintList = ColorStateList.valueOf(primary)
+                setTextColor(textOnPrimary)
+            }
 
-            findViewById<Button>(R.id.buttonClear).backgroundTintList = ColorStateList.valueOf(secondary)
-            findViewById<Button>(R.id.buttonPlus).backgroundTintList = ColorStateList.valueOf(secondary)
-            findViewById<Button>(R.id.buttonMinus).backgroundTintList = ColorStateList.valueOf(secondary)
+            // Control Buttons
+            findViewById<Button>(R.id.buttonClear).apply {
+                backgroundTintList = ColorStateList.valueOf(secondary)
+                setTextColor(textOnSecondary)
+            }
+            findViewById<Button>(R.id.buttonPlus).apply {
+                backgroundTintList = ColorStateList.valueOf(secondary)
+                setTextColor(textOnSecondary)
+            }
+            findViewById<Button>(R.id.buttonMinus).apply {
+                backgroundTintList = ColorStateList.valueOf(secondary)
+                setTextColor(textOnSecondary)
+            }
 
-            findViewById<TextView>(R.id.headerText).setTextColor(primary)
-            findViewById<TextView>(R.id.footerText).setTextColor(secondary)
+            // Text elements
+            findViewById<TextView>(R.id.headerText).setTextColor(textOnBackground)
+            findViewById<TextView>(R.id.footerText).setTextColor(textOnBackground)
+            findViewById<TextView>(R.id.timerDisplay).setTextColor(textOnBackground)
+            findViewById<TextView>(R.id.remainingTimeDisplay).setTextColor(textOnBackground)
+
+            // Background
+            window.decorView.setBackgroundColor(background)
         }
     }
+
 
     private fun setupClickListeners() {
         timerDisplay.apply {
