@@ -7,45 +7,83 @@
     <color name="timer_stopped">#FFC107</color>  <!-- Yellow -->
     <color name="timer_finished">#F44336</color> <!-- Red -->
 
-    <!-- Themes -->
-
     <!-- Lakers -->
-    <color name="lakers_primary">#552583</color>    <!-- Purple -->
-    <color name="lakers_secondary">#FDB927</color>  <!-- Gold -->
+    <color name="lakers_primary">#552583</color>          <!-- Purple -->
+    <color name="lakers_secondary">#FDB927</color>        <!-- Gold -->
+    <color name="lakers_background">#FFFFFF</color>       <!-- White -->
+    <color name="lakers_text_on_primary">#FFFFFF</color>  <!-- White text on Purple -->
+    <color name="lakers_text_on_secondary">#000000</color><!-- Black text on Gold -->
+    <color name="lakers_text_on_background">#000000</color><!-- Black text on White -->
 
     <!-- Mavericks -->
-    <color name="mavs_primary">#0064B1</color>     <!-- Royal Blue -->
-    <color name="mavs_secondary">#BBC4CA</color>    <!-- Silver -->
+    <color name="mavs_primary">#0064B1</color>           <!-- Royal Blue -->
+    <color name="mavs_secondary">#BBC4CA</color>         <!-- Silver -->
+    <color name="mavs_background">#FFFFFF</color>        <!-- White -->
+    <color name="mavs_text_on_primary">#FFFFFF</color>   <!-- White text on Blue -->
+    <color name="mavs_text_on_secondary">#000000</color> <!-- Black text on Silver -->
+    <color name="mavs_text_on_background">#000000</color><!-- Black text on White -->
 
     <!-- Celtics -->
-    <color name="celtics_primary">#008348</color>   <!-- Green -->
-    <color name="celtics_secondary">#008348</color> <!-- Green -->
+    <color name="celtics_primary">#008348</color>         <!-- Green -->
+    <color name="celtics_secondary">#FFFFFF</color>       <!-- White -->
+    <color name="celtics_background">#EFEFEF</color>      <!-- Light Gray -->
+    <color name="celtics_text_on_primary">#FFFFFF</color> <!-- White text on Green -->
+    <color name="celtics_text_on_secondary">#008348</color><!-- Green text on White -->
+    <color name="celtics_text_on_background">#000000</color><!-- Black text on Light Gray -->
 
     <!-- Warriors -->
-    <color name="warriors_primary">#1D428A</color>  <!-- Royal Blue -->
-    <color name="warriors_secondary">#FFC72C</color><!-- Golden Yellow -->
+    <color name="warriors_primary">#1D428A</color>         <!-- Royal Blue -->
+    <color name="warriors_secondary">#FFC72C</color>       <!-- Golden Yellow -->
+    <color name="warriors_background">#FFFFFF</color>      <!-- White -->
+    <color name="warriors_text_on_primary">#FFFFFF</color> <!-- White text on Blue -->
+    <color name="warriors_text_on_secondary">#000000</color><!-- Black text on Yellow -->
+    <color name="warriors_text_on_background">#000000</color><!-- Black text on White -->
 
-    <!-- Chicago Bulls -->
-    <color name="bulls_primary">#CE1141</color>     <!-- Bulls Red -->
-    <color name="bulls_secondary">#000000</color>   <!-- Black -->
+    <!-- Bulls -->
+    <color name="bulls_primary">#CE1141</color>           <!-- Bulls Red -->
+    <color name="bulls_secondary">#000000</color>         <!-- Black -->
+    <color name="bulls_background">#FFFFFF</color>        <!-- White -->
+    <color name="bulls_text_on_primary">#FFFFFF</color>   <!-- White text on Red -->
+    <color name="bulls_text_on_secondary">#FFFFFF</color> <!-- White text on Black -->
+    <color name="bulls_text_on_background">#000000</color><!-- Black text on White -->
 
-    <!-- Miami Heat -->
-    <color name="heat_primary">#98002E</color>      <!-- Heat Red -->
-    <color name="heat_secondary">#F9A01B</color>    <!-- Heat Yellow -->
+    <!-- Heat -->
+    <color name="heat_primary">#98002E</color>            <!-- Heat Red -->
+    <color name="heat_secondary">#F9A01B</color>          <!-- Heat Yellow -->
+    <color name="heat_background">#000000</color>         <!-- Black -->
+    <color name="heat_text_on_primary">#FFFFFF</color>    <!-- White text on Red -->
+    <color name="heat_text_on_secondary">#000000</color>  <!-- Black text on Yellow -->
+    <color name="heat_text_on_background">#FFFFFF</color>  <!-- White text on Black -->
 
-    <!-- Brooklyn Nets -->
-    <color name="nets_primary">#000000</color>      <!-- Black -->
-    <color name="nets_secondary">#000000</color>    <!-- Black -->
+    <!-- Nets -->
+    <color name="nets_primary">#000000</color>            <!-- Black -->
+    <color name="nets_secondary">#FFFFFF</color>          <!-- White -->
+    <color name="nets_background">#FFFFFF</color>         <!-- White -->
+    <color name="nets_text_on_primary">#FFFFFF</color>    <!-- White text on Black -->
+    <color name="nets_text_on_secondary">#000000</color>  <!-- Black text on White -->
+    <color name="nets_text_on_background">#000000</color> <!-- Black text on White -->
 
-    <!-- Phoenix Suns -->
-    <color name="suns_primary">#1D1160</color>      <!-- Suns Purple -->
-    <color name="suns_secondary">#E56020</color>    <!-- Suns Orange -->
+    <!-- Suns -->
+    <color name="suns_primary">#1D1160</color>            <!-- Suns Purple -->
+    <color name="suns_secondary">#E56020</color>          <!-- Suns Orange -->
+    <color name="suns_background">#FFFFFF</color>         <!-- White -->
+    <color name="suns_text_on_primary">#FFFFFF</color>    <!-- White text on Purple -->
+    <color name="suns_text_on_secondary">#FFFFFF</color>  <!-- White text on Orange -->
+    <color name="suns_text_on_background">#000000</color> <!-- Black text on White -->
 
-    <!-- Milwaukee Bucks -->
-    <color name="bucks_primary">#00471B</color>     <!-- Bucks Green -->
-    <color name="bucks_secondary">#EEE1C6</color>   <!-- Cream -->
+    <!-- Bucks -->
+    <color name="bucks_primary">#00471B</color>           <!-- Bucks Green -->
+    <color name="bucks_secondary">#EEE1C6</color>         <!-- Cream -->
+    <color name="bucks_background">#FFFFFF</color>        <!-- White -->
+    <color name="bucks_text_on_primary">#FFFFFF</color>   <!-- White text on Green -->
+    <color name="bucks_text_on_secondary">#00471B</color> <!-- Green text on Cream -->
+    <color name="bucks_text_on_background">#000000</color> <!-- Black text on White -->
 
-    <!-- Utah Jazz -->
-    <color name="jazz_primary">#002B5C</color>      <!-- Jazz Navy -->
-    <color name="jazz_secondary">#F9A01B</color>    <!-- Jazz Gold -->
+    <!-- Jazz -->
+    <color name="jazz_primary">#002B5C</color>            <!-- Jazz Navy -->
+    <color name="jazz_secondary">#F9A01B</color>          <!-- Jazz Gold -->
+    <color name="jazz_background">#FFFFFF</color>         <!-- White -->
+    <color name="jazz_text_on_primary">#FFFFFF</color>    <!-- White text on Navy -->
+    <color name="jazz_text_on_secondary">#000000</color>  <!-- Black text on Gold -->
+    <color name="jazz_text_on_background">#000000</color> <!-- Black text on White -->
 </resources>

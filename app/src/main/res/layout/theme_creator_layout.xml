@@ -59,6 +59,20 @@
             android:background="@android:color/holo_orange_dark"
             android:layout_marginBottom="24dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hintergrundfarbe"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <View
+            android:id="@+id/backgroundColorPreview"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@android:color/white"
+            android:layout_marginBottom="24dp"/>
+
         <Button
             android:id="@+id/saveThemeButton"
             android:layout_width="match_parent"
