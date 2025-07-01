@@ -15,6 +15,8 @@ class SettingsManager(context: Context) {
         private const val KEY_CUSTOM_THEMES = "custom_themes"
         private const val KEY_VIBRATION = "vibration_enabled"
         private const val KEY_PULSE = "pulse_enabled"
+        private const val KEY_SELECTED_THEME_TYPE = "selected_theme_type"
+        private const val KEY_SELECTED_CUSTOM_THEME_NAME = "selected_custom_theme_name"
     }
 
     var isVibrationEnabled: Boolean
@@ -28,6 +30,14 @@ class SettingsManager(context: Context) {
     var selectedTheme: TeamTheme
         get() = TeamTheme.valueOf(prefs.getString(KEY_THEME, TeamTheme.LAKERS.name) ?: TeamTheme.LAKERS.name)
         set(value) = prefs.edit { putString(KEY_THEME, value.name) }
+
+    var selectedThemeType: String
+        get() = prefs.getString(KEY_SELECTED_THEME_TYPE, "preset") ?: "preset"
+        set(value) = prefs.edit { putString(KEY_SELECTED_THEME_TYPE, value) }
+
+    var selectedCustomThemeName: String?
+        get() = prefs.getString(KEY_SELECTED_CUSTOM_THEME_NAME, null)
+        set(value) = prefs.edit { putString(KEY_SELECTED_CUSTOM_THEME_NAME, value) }
 
     var customThemes: List<CustomTheme>
         get() {
@@ -50,5 +60,30 @@ class SettingsManager(context: Context) {
         val currentThemes = customThemes.toMutableList()
         currentThemes.remove(theme)
         customThemes = currentThemes
+        
+        // If the removed theme was the currently selected one, fall back to preset theme
+        if (selectedThemeType == "custom" && selectedCustomThemeName == theme.name) {
+            selectedThemeType = "preset"
+            selectedCustomThemeName = null
+        }
+    }
+
+    fun setSelectedCustomTheme(theme: CustomTheme) {
+        selectedThemeType = "custom"
+        selectedCustomThemeName = theme.name
+    }
+
+    fun setSelectedPresetTheme(theme: TeamTheme) {
+        selectedThemeType = "preset"
+        selectedTheme = theme
+        selectedCustomThemeName = null
+    }
+
+    fun getCurrentSelectedCustomTheme(): CustomTheme? {
+        return if (selectedThemeType == "custom" && selectedCustomThemeName != null) {
+            customThemes.find { it.name == selectedCustomThemeName }
+        } else {
+            null
+        }
     }
 }
