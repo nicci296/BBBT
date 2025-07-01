@@ -96,22 +96,39 @@ class ThemeCreatorDialog(
 
     private fun setupSaveButton() {
         dialog.findViewById<Button>(R.id.saveThemeButton).setOnClickListener {
-            val themeName = dialog.findViewById<TextInputEditText>(R.id.themeNameInput).text.toString()
+            val themeName = dialog.findViewById<TextInputEditText>(R.id.themeNameInput).text.toString().trim()
             if (themeName.isNotEmpty()) {
-                val newTheme = CustomTheme(
-                    name = themeName,
-                    primaryColor = currentPrimaryColor,
-                    secondaryColor = currentSecondaryColor,
-                    backgroundColor = currentBackgroundColor,
-                    textOnPrimary = currentTextOnPrimary,
-                    textOnSecondary = currentTextOnSecondary,
-                    textOnBackground = currentTextOnBackground
-                )
-                settingsManager.addCustomTheme(newTheme)
-                // Apply the theme only after saving
-                themeManager.applyTheme(newTheme)
-                onThemeSaved()
-                dialog.dismiss()
+                try {
+                    val newTheme = CustomTheme(
+                        name = themeName,
+                        primaryColor = currentPrimaryColor,
+                        secondaryColor = currentSecondaryColor,
+                        backgroundColor = currentBackgroundColor,
+                        textOnPrimary = currentTextOnPrimary,
+                        textOnSecondary = currentTextOnSecondary,
+                        textOnBackground = currentTextOnBackground
+                    )
+                    
+                    // Save the theme first
+                    settingsManager.addCustomTheme(newTheme)
+                    
+                    // Then set it as selected
+                    settingsManager.setSelectedCustomTheme(newTheme)
+                    
+                    // Apply the theme
+                    themeManager.applyTheme(newTheme)
+                    
+                    // Dismiss dialog first to prevent UI conflicts
+                    dialog.dismiss()
+                    
+                    // Then refresh the parent dialog
+                    onThemeSaved()
+                    
+                } catch (e: Exception) {
+                    // Handle any errors gracefully
+                    e.printStackTrace()
+                    // Could show a toast or error message here
+                }
             }
         }
     }

@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         // Apply saved theme on startup
         setupThemeCallback()
-        themeManager.applyTheme(settingsManager.selectedTheme)
+        applySavedTheme()
 
         setupViews()
 
@@ -100,6 +100,15 @@ class MainActivity : AppCompatActivity() {
         ).apply {
             duration = 500
             repeatCount = ObjectAnimator.INFINITE
+        }
+    }
+
+    private fun applySavedTheme() {
+        val currentCustomTheme = settingsManager.getCurrentSelectedCustomTheme()
+        if (currentCustomTheme != null) {
+            themeManager.applyTheme(currentCustomTheme)
+        } else {
+            themeManager.applyTheme(settingsManager.selectedTheme)
         }
     }
 
