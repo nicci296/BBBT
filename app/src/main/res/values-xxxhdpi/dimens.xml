@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- High-density adjustments for xxxhdpi screens -->
+    <!-- Only override specific dimensions that need density-specific fine-tuning -->
+    
+    <!-- Icon and UI element adjustments for very high density -->
+    <dimen name="icon_button_size">40dp</dimen>
+    
+    <!-- Slightly increased margins for better visual balance on high-density -->
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="content_spacing_small">3dp</dimen>
+    
+    <!-- Fine-tuned padding for high-density rendering -->
+    <dimen name="padding_small">5dp</dimen>
+    
+    <!-- Timer display fine-tuning for crisp rendering -->
+    <dimen name="timer_display_text_size">74sp</dimen>
+    <dimen name="timer_display_text_size_landscape">50sp</dimen>
+</resources> 

@@ -57,7 +57,7 @@
                     android:layout_height="80dp"
                     android:layout_weight="1"
                     android:text="24s"
-                    android:textSize="32sp"
+                    android:textSize="@dimen/button_text_size_large"
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/design_default_color_primary"/>
 
@@ -67,7 +67,7 @@
                     android:layout_height="80dp"
                     android:layout_weight="1"
                     android:text="14s"
-                    android:textSize="32sp"
+                    android:textSize="@dimen/button_text_size_large"
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/design_default_color_primary"/>
             </LinearLayout>
@@ -76,7 +76,7 @@
                 android:id="@+id/timerDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="72sp"
+                android:textSize="@dimen/timer_display_text_size"
                 android:textStyle="bold"
                 android:text="0.0"
                 android:gravity="center"
@@ -90,7 +90,7 @@
                 android:id="@+id/remainingTimeDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="@dimen/remaining_time_text_size"
                 android:gravity="center"
                 android:layout_marginTop="8dp"/>
 
@@ -133,7 +133,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Approved by The Order Of Bönix"
-        android:textSize="12sp"
+        android:textSize="@dimen/footer_text_size"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

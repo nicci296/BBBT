@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Sizes - Small Screen Optimized -->
+    <dimen name="header_text_size_normal">18sp</dimen>
+    <dimen name="header_text_size_small">14sp</dimen>
+    
+    <!-- Timer Display Text Sizes - Reduced for small screens -->
+    <dimen name="timer_display_text_size">56sp</dimen>
+    <dimen name="timer_display_text_size_landscape">40sp</dimen>
+    
+    <!-- Button Text Sizes - Compact but readable -->
+    <dimen name="button_text_size_large">24sp</dimen>
+    <dimen name="button_text_size_medium">16sp</dimen>
+    <dimen name="button_text_size_small">12sp</dimen>
+    
+    <!-- Secondary Text Sizes -->
+    <dimen name="remaining_time_text_size">14sp</dimen>
+    <dimen name="footer_text_size">10sp</dimen>
+    <dimen name="footer_text_size_landscape">9sp</dimen>
+    
+    <!-- Dialog Text Sizes -->
+    <dimen name="dialog_title_text_size">16sp</dimen>
+    <dimen name="dialog_description_text_size">12sp</dimen>
+    
+    <!-- Button Heights - Maintain minimum touch targets -->
+    <dimen name="main_button_height">64dp</dimen>
+    <dimen name="secondary_button_height">48dp</dimen>
+    <dimen name="icon_button_size">32dp</dimen>
+    
+    <!-- Spacing - Margins - Reduced for space efficiency -->
+    <dimen name="margin_small">2dp</dimen>
+    <dimen name="margin_medium">4dp</dimen>
+    <dimen name="margin_large">8dp</dimen>
+    <dimen name="margin_xlarge">12dp</dimen>
+    <dimen name="margin_xxlarge">20dp</dimen>
+    
+    <!-- Spacing - Padding -->
+    <dimen name="padding_small">2dp</dimen>
+    <dimen name="padding_medium">4dp</dimen>
+    <dimen name="padding_large">8dp</dimen>
+    <dimen name="padding_xlarge">12dp</dimen>
+    
+    <!-- Layout Padding - Minimal for small screens -->
+    <dimen name="layout_padding_horizontal">8dp</dimen>
+    <dimen name="layout_padding_vertical">8dp</dimen>
+    <dimen name="layout_padding_vertical_landscape">4dp</dimen>
+    
+    <!-- Content Spacing -->
+    <dimen name="content_spacing_small">1dp</dimen>
+    <dimen name="content_spacing_medium">2dp</dimen>
+    <dimen name="content_spacing_large">4dp</dimen>
+</resources> 
