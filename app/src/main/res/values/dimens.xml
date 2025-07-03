@@ -1,5 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Text Sizes -->
     <dimen name="header_text_size_normal">24sp</dimen>
     <dimen name="header_text_size_small">16sp</dimen>
+    
+    <!-- Timer Display Text Sizes -->
+    <dimen name="timer_display_text_size">72sp</dimen>
+    <dimen name="timer_display_text_size_landscape">48sp</dimen>
+    
+    <!-- Button Text Sizes -->
+    <dimen name="button_text_size_large">32sp</dimen>
+    <dimen name="button_text_size_medium">18sp</dimen>
+    <dimen name="button_text_size_small">14sp</dimen>
+    
+    <!-- Secondary Text Sizes -->
+    <dimen name="remaining_time_text_size">18sp</dimen>
+    <dimen name="footer_text_size">12sp</dimen>
+    <dimen name="footer_text_size_landscape">10sp</dimen>
+    
+    <!-- Dialog Text Sizes -->
+    <dimen name="dialog_title_text_size">20sp</dimen>
+    <dimen name="dialog_description_text_size">14sp</dimen>
+    
+    <!-- Button Heights -->
+    <dimen name="main_button_height">80dp</dimen>
+    <dimen name="secondary_button_height">48dp</dimen>
+    <dimen name="icon_button_size">36dp</dimen>
+    
+    <!-- Spacing - Margins -->
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_xlarge">24dp</dimen>
+    <dimen name="margin_xxlarge">40dp</dimen>
+    
+    <!-- Spacing - Padding -->
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_xlarge">24dp</dimen>
+    
+    <!-- Layout Padding -->
+    <dimen name="layout_padding_horizontal">16dp</dimen>
+    <dimen name="layout_padding_vertical">16dp</dimen>
+    <dimen name="layout_padding_vertical_landscape">8dp</dimen>
+    
+    <!-- Minimum Touch Targets -->
+    <dimen name="min_touch_target_size">48dp</dimen>
+    
+    <!-- Content Spacing -->
+    <dimen name="content_spacing_small">2dp</dimen>
+    <dimen name="content_spacing_medium">4dp</dimen>
+    <dimen name="content_spacing_large">8dp</dimen>
+    
+    <!-- Layout Weights and Percentages (as decimal) -->
+    <item name="layout_weight_equal" format="float" type="dimen">1.0</item>
+    <item name="layout_width_half" format="float" type="dimen">0.5</item>
 </resources>

@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Settings"
-            android:textSize="20sp"
+            android:textSize="@dimen/dialog_title_text_size"
             android:textStyle="bold"
             android:layout_marginBottom="24dp"/>
 
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Aktiviert Vibration beim bedienen von Schaltflächen"
-            android:textSize="14sp"
+            android:textSize="@dimen/dialog_description_text_size"
             android:textColor="?android:textColorSecondary"
             android:layout_marginStart="4dp"
             android:layout_marginBottom="24dp"/>
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Zeigt Puls-Animation während der letzten 5 Sekunden des Timers"
-            android:textSize="14sp"
+            android:textSize="@dimen/dialog_description_text_size"
             android:textColor="?android:textColorSecondary"
             android:layout_marginStart="4dp"
             android:layout_marginBottom="8dp"/>
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team Theme"
-            android:textSize="20sp"
+            android:textSize="@dimen/dialog_title_text_size"
             android:textStyle="bold"
             android:layout_marginBottom="16dp"/>
 
@@ -161,7 +161,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tips"
-            android:textSize="20sp"
+            android:textSize="@dimen/dialog_title_text_size"
             android:textStyle="bold"
             android:layout_marginBottom="16dp"/>
 
@@ -169,7 +169,7 @@
             android:id="@+id/tipsText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/dialog_description_text_size"/>
 
     </LinearLayout>
 </ScrollView>

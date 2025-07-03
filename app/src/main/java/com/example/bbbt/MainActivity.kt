@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
 
         pulseAnimation = createPulseAnimation()
         setupTimer()
+        // Set initial timer color to stopped state
+        updateTimerColor(TimerState.STOPPED)
         setupClickListeners()
 
         findViewById<ImageButton>(R.id.settingsButton).setOnClickListener {
@@ -141,7 +143,8 @@ class MainActivity : AppCompatActivity() {
             // Text elements
             findViewById<TextView>(R.id.headerText).setTextColor(textOnBackground)
             findViewById<TextView>(R.id.footerText).setTextColor(textOnBackground)
-            findViewById<TextView>(R.id.timerDisplay).setTextColor(textOnBackground)
+            // NOTE: timerDisplay color is managed by updateTimerColor() based on timer state
+            // Do not override it here to preserve color-coded timer functionality
             findViewById<TextView>(R.id.remainingTimeDisplay).setTextColor(textOnBackground)
 
             // Background

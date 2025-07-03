@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Sizes - Large Tablet Optimized (10"+ devices) -->
+    <dimen name="header_text_size_normal">36sp</dimen>
+    <dimen name="header_text_size_small">28sp</dimen>
+    
+    <!-- Timer Display Text Sizes - Extra large for big tablets -->
+    <dimen name="timer_display_text_size">120sp</dimen>
+    <dimen name="timer_display_text_size_landscape">96sp</dimen>
+    
+    <!-- Button Text Sizes - Scaled up for large tablets -->
+    <dimen name="button_text_size_large">42sp</dimen>
+    <dimen name="button_text_size_medium">28sp</dimen>
+    <dimen name="button_text_size_small">20sp</dimen>
+    
+    <!-- Secondary Text Sizes -->
+    <dimen name="remaining_time_text_size">28sp</dimen>
+    <dimen name="footer_text_size">18sp</dimen>
+    <dimen name="footer_text_size_landscape">16sp</dimen>
+    
+    <!-- Dialog Text Sizes -->
+    <dimen name="dialog_title_text_size">32sp</dimen>
+    <dimen name="dialog_description_text_size">20sp</dimen>
+    
+    <!-- Button Heights - Extra large for big tablet touch targets -->
+    <dimen name="main_button_height">112dp</dimen>
+    <dimen name="secondary_button_height">64dp</dimen>
+    <dimen name="icon_button_size">56dp</dimen>
+    
+    <!-- Spacing - Margins - Extra generous spacing on large tablets -->
+    <dimen name="margin_small">12dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_xlarge">48dp</dimen>
+    <dimen name="margin_xxlarge">64dp</dimen>
+    
+    <!-- Spacing - Padding -->
+    <dimen name="padding_small">12dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">32dp</dimen>
+    <dimen name="padding_xlarge">48dp</dimen>
+    
+    <!-- Layout Padding - Increased further for large tablets -->
+    <dimen name="layout_padding_horizontal">48dp</dimen>
+    <dimen name="layout_padding_vertical">32dp</dimen>
+    <dimen name="layout_padding_vertical_landscape">24dp</dimen>
+    
+    <!-- Content Spacing -->
+    <dimen name="content_spacing_small">6dp</dimen>
+    <dimen name="content_spacing_medium">12dp</dimen>
+    <dimen name="content_spacing_large">16dp</dimen>
+</resources> 
